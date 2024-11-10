@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fancier.missingyou.common.mapper.QuestionBankQuestionMapper">
+  <resultMap id="BaseResultMap" type="com.fancier.missingyou.common.model.entity.QuestionBankQuestion">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="question_bank_id" jdbcType="BIGINT" property="questionBankId" />
+    <result column="question_id" jdbcType="BIGINT" property="questionId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from question_bank_question
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fancier.missingyou.common.model.entity.QuestionBankQuestion" useGeneratedKeys="true">
+    insert into question_bank_question (question_bank_id, question_id, user_id, 
+      create_time, update_time)
+    values (#{questionBankId,jdbcType=BIGINT}, #{questionId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.fancier.missingyou.common.model.entity.QuestionBankQuestion">
+    update question_bank_question
+    set question_bank_id = #{questionBankId,jdbcType=BIGINT},
+      question_id = #{questionId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, question_bank_id, question_id, user_id, create_time, update_time
+    from question_bank_question
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, question_bank_id, question_id, user_id, create_time, update_time
+    from question_bank_question
+  </select>
+</mapper>

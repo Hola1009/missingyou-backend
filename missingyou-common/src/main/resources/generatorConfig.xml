@@ -1,0 +1,82 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="mbg.properties"/>
+    <!-- MyBatis3Simple风格 -->
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+
+        <plugin type = "${plugin.package}.LombokAnnotationPlugin"/>
+        <plugin type = "${plugin.package}.BaseMapperGeneratorPlugin"/>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否。 自动生成注释太啰嗦，可以编码扩展CommentGenerator -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}" password="${jdbc.password}">
+            <!-- 设置为true就只读取db_book下的表, 否则会优先读取到mysql的user表  -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- 生成PO的包名和位置 -->
+        <javaModelGenerator targetPackage="${model.package}" targetProject="src/main/java">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="enableLombok" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成XML映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!-- 生成Mapper接口的包名和位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${client.package}" targetProject="src/main/java">
+            <property name="rootClass" value="com.baomidou.mybatisplus.core.mapper.BaseMapper"/>
+        </javaClientGenerator>
+
+        <table tableName="user" domainObjectName="User">
+            <!-- 自增主键列 -->
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <!-- tinyint映射为Integer -->
+            <columnOverride column="is_delete" javaType="Integer" jdbcType="TINYINT"/>
+
+            <columnOverride column="create_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="update_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="edit_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+        </table>
+        <table tableName="question" domainObjectName="Question">
+            <!-- 自增主键列 -->
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <!-- tinyint映射为Integer -->
+            <columnOverride column="is_delete" javaType="Integer" jdbcType="TINYINT"/>
+
+            <columnOverride column="create_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="update_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="edit_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+        </table>
+
+        <table tableName="question_bank" domainObjectName="QuestionBank">
+            <!-- 自增主键列 -->
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <!-- tinyint映射为Integer -->
+            <columnOverride column="is_delete" javaType="Integer" jdbcType="TINYINT"/>
+
+            <columnOverride column="create_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="update_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="edit_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+        </table>
+
+        <table tableName="question_bank_question" domainObjectName="QuestionBankQuestion">
+            <!-- 自增主键列 -->
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <!-- tinyint映射为Integer -->
+            <columnOverride column="is_delete" javaType="Integer" jdbcType="TINYINT"/>
+
+            <columnOverride column="create_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="update_time" javaType="LocalDateTime" jdbcType="TIMESTAMP"/>
+        </table>
+    </context>
+</generatorConfiguration>
