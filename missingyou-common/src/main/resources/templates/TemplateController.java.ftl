@@ -55,6 +55,7 @@ public class ${upperDataKey}Controller {
      *
      */
     @PostMapping("/delete")
+    @SaCheckRole(UserConstant.ADMIN_ROLE)
     public BaseResponse<Boolean> delete${upperDataKey}(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request) {
         Preconditions.checkArgument(deleteRequest != null && deleteRequest.getId() > 0);
         long id = deleteRequest.getId();

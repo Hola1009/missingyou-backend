@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 /**
@@ -26,6 +27,21 @@ public class QuestionVO {
     private Long id;
 
     /**
+     * 标题
+     */
+    private String title;
+
+    /**
+     * 内容
+     */
+    private String content;
+
+    /**
+     * 推荐答案
+     */
+    private String answer;
+
+    /**
      * 创建用户 id
      */
     private Long userId;
@@ -39,4 +55,10 @@ public class QuestionVO {
      * 更新时间
      */
     private LocalDateTime updateTime;
+
+    /**
+     * 标签列表
+     */
+    private List<String> tagList;
+
 }

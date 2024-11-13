@@ -2,6 +2,7 @@ package com.fancier.missingyou.auth.config;
 
 import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.stp.StpUtil;
+import com.fancier.missingyou.common.model.entity.User;
 import org.springframework.stereotype.Component;
 
 

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 /**
  * 创建用户评论请求
@@ -18,5 +20,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class QuestionAddRequest {
+
+    private String title;
+
+    private List<String> tags;
+
     private String content;
+
+    private String answer;
 }

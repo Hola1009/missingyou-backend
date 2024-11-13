@@ -41,21 +41,24 @@ public class QuestionController {
 
     private final UserService userService;
 
-    // region 增删改查
 
     /**
      * 创建用户评论
      *
      */
     @PostMapping("/add")
-    public BaseResponse<Long> addQuestion(@RequestBody QuestionAddRequest questionAddRequest, HttpServletRequest ignoredRequest) {
+    public BaseResponse<Long> addQuestion(@RequestBody QuestionAddRequest questionAddRequest, HttpServletRequest request) {
         Preconditions.checkArgument(questionAddRequest != null);
-        // todo 在此处将实体类和 DTO 进行转换
         Question question = QuestionConvert.INSTANCE.addDTO2DO(questionAddRequest) ;
 
-        // todo 数据校验
+        // 数据校验
+        questionService.validQuestion(question, true);
 
-        // todo 填充默认值
+        // 填充默认值
+
+        Long userId = userService.getLoginUser(request).getId();
+        question.setUserId(userId);
+
         // 写入数据库
         boolean result = questionService.save(question);
         ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
@@ -69,6 +72,7 @@ public class QuestionController {
      *
      */
     @PostMapping("/delete")
+    @SaCheckRole(UserConstant.ADMIN_ROLE)
     public BaseResponse<Boolean> deleteQuestion(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request) {
         Preconditions.checkArgument(deleteRequest != null && deleteRequest.getId() > 0);
         long id = deleteRequest.getId();
@@ -91,7 +95,9 @@ public class QuestionController {
         Preconditions.checkArgument(questionUpdateRequest != null && questionUpdateRequest.getId() > 0);
 
         Question question = QuestionConvert.INSTANCE.updateDTO2DO(questionUpdateRequest);
-        // todo 数据校验
+
+        // 数据校验
+        questionService.validQuestion(question, false);
 
         // 判断是否存在
         long id = questionUpdateRequest.getId();
@@ -104,7 +110,7 @@ public class QuestionController {
     }
 
     /**
-     * 根据 id 获取用户评论（封装类）
+     * 根据 id 获取用户（封装类）
      *
      */
     @GetMapping("/get/vo")
@@ -112,7 +118,9 @@ public class QuestionController {
         ThrowUtils.throwIf(id <= 0, ErrorCode.PARAMS_ERROR);
         // 查询数据库
         Question question = questionService.getById(id);
+
         ThrowUtils.throwIf(question == null, ErrorCode.NOT_FOUND_ERROR);
+
         // 获取封装类
         return ResultUtils.success(QuestionConvert.INSTANCE.DO2QuestionVO(question));
     }
@@ -148,11 +156,10 @@ public class QuestionController {
 
         Preconditions.checkArgument(questionEditRequest != null && questionEditRequest.getId() > 0);
 
-        // todo 在此处将实体类和 DTO 进行转换
         Question question = QuestionConvert.INSTANCE.editDTO2DO(questionEditRequest);
-        // todo 数据校验
 
         // 判断是否存在
+        questionService.validQuestion(question, false);
         long id = questionEditRequest.getId();
         check(id, request);
 

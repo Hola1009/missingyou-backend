@@ -15,6 +15,13 @@ import com.fancier.missingyou.common.model.vo.QuestionVO;
  */
 public interface QuestionService extends IService<Question> {
 
+    /**
+     * 校验数据
+     *
+     * @param add      对创建的数据进行校验
+     */
+    void validQuestion(Question question, boolean add);
+
 
     /**
      * 获取查询条件

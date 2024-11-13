@@ -1,5 +1,6 @@
 package com.fancier.missingyou.web.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -17,6 +18,7 @@ import com.google.common.base.Preconditions;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -76,8 +78,45 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
     }
 
     /**
-     * 获取查询条件
+     * 校验数据
      *
+     * @param add 对创建的数据进行校验
+     */
+    @Override
+    public void validQuestion(Question question, boolean add) {
+        ThrowUtils.throwIf(question == null, ErrorCode.PARAMS_ERROR);
+
+        String title = question.getTitle();
+        String content = question.getContent();
+        // 创建数据时，参数不能为空
+        ThrowUtils.throwIf(add && StringUtils.isBlank(title), ErrorCode.PARAMS_ERROR);
+
+        // 修改数据时，有参数则校验
+        ThrowUtils.throwIf(StringUtils.isNotBlank(title) && title.length() > 80,
+                ErrorCode.PARAMS_ERROR, "标题过长");
+
+        ThrowUtils.throwIf(StringUtils.isNotBlank(content) && content.length() > 10240,
+                ErrorCode.PARAMS_ERROR, "内容过长");
+    }
+
+
+
+
+    /**
+     * 获取查询条件
+     * sql 语句样例
+     * SELECT *
+     * FROM question
+     * WHERE
+     *     (title LIKE '%searchText%' OR content LIKE '%searchText%') -- 从 `searchText` 变量得到的条件
+     *     AND title LIKE '%title%' -- 如果 `title` 不为空
+     *     AND content LIKE '%content%' -- 如果 `content` 不为空
+     *     AND answer LIKE '%answer%'  -- 如果 `answer` 不为空
+     *     AND id <> notId -- 如果 `notId` 不为空
+     *     AND id = id -- 如果 `id` 不为空
+     *     AND user_id = userId -- 如果 `userId` 不为空
+     *     AND (tags LIKE '"tag1"' OR tags LIKE '"tag2"') -- 从 tagList 变量生成的条件
+     * ORDER BY sortField ASC; -- 假设 `sortField` 指定了某个排序列
      */
     @Override
     public QueryWrapper<Question> getQueryWrapper(QuestionQueryRequest questionQueryRequest) {
@@ -86,19 +125,43 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
         QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
 
-        // todo 从对象中取值
         Long id = questionQueryRequest.getId();
+        Long notId = questionQueryRequest.getNotId();
+        String title = questionQueryRequest.getTitle();
+        String content = questionQueryRequest.getContent();
+        String searchText = questionQueryRequest.getSearchText();
         String sortField = questionQueryRequest.getSortField();
         String sortOrder = questionQueryRequest.getSortOrder();
+        List<String> tagList = questionQueryRequest.getTags();
+        Long userId = questionQueryRequest.getUserId();
+        String answer = questionQueryRequest.getAnswer();
 
-        // todo 补充需要的查询条件
+        // 从多字段中搜索
+        if (StringUtils.isNotBlank(searchText)) {
+            // 需要拼接查询条件
+            queryWrapper.and(qw -> qw.like("title", searchText).or().like("content", searchText));
+        }
+
+        // 模糊查询
+        queryWrapper.like(StringUtils.isNotBlank(title), "title", title)
+                .like(StringUtils.isNotBlank(content), "content", content)
+                .like(StringUtils.isNotBlank(answer), "answer", answer);
+
+        // JSON 数组查询
+        if (CollUtil.isNotEmpty(tagList)) {
+            tagList.forEach(tag -> queryWrapper.like("tags", "\"" + tag + "\""));
+        }
 
         // 精确查询
-        queryWrapper.eq(ObjectUtils.isNotEmpty(id), "id", id);
+        queryWrapper.ne(ObjectUtils.isNotEmpty(notId) && notId != 0, "id", notId)
+                .eq(ObjectUtils.isNotEmpty(id) && id != 0, "id", id)
+                .eq(ObjectUtils.isNotEmpty(userId) && id != 0, "user_id", userId);
+
         // 排序规则
         queryWrapper.orderBy(SqlUtils.validSortField(sortField),
                 sortOrder.equals(CommonConstant.SORT_ORDER_ASC),
                 sortField);
+
         return queryWrapper;
     }
 
