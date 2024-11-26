@@ -168,6 +168,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return isAdmin(user);
     }
 
+    /**
+     * 获取当前登录用户信息
+     */
+    @Override
+    public UserVO getLoginUserVO(HttpServletRequest request) {
+        User loginUser = this.getLoginUser(request);
+        return UserConvert.INSTANCE.DO2UserVO(loginUser);
+    }
+
     @Override
     public boolean isAdmin(User user) {
         return user != null && UserRoleEnum.ADMIN.getValue().equals(user.getUserRole());

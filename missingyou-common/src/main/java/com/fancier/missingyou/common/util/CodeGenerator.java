@@ -27,11 +27,11 @@ public class CodeGenerator {
     public static void main(String[] args) throws TemplateException, IOException {
         // 指定生成参数
         String packageName = "com.fancier.missingyou.common";
-        String dataName = "题库";
+        String dataName = "题库题目关联";
         // 小驼峰
-        String dataKey = "questionBank";
+        String dataKey = "questionBankQuestion";
         // 大驼峰
-        String upperDataKey = "QuestionBank";
+        String upperDataKey = "QuestionBankQuestion";
 
         // 封装生成参数
         Map<String, Object> dataModel = new HashMap<>();

@@ -19,7 +19,7 @@ public interface ${upperDataKey}Service extends IService<${upperDataKey}> {
     *
     * @param add 对创建的数据进行校验
     */
-    void valid${upperDataKey}(QuestionBank questionBank, boolean add);
+    void valid${upperDataKey}(${upperDataKey} ${dataKey}, boolean add);
 
 
     /**

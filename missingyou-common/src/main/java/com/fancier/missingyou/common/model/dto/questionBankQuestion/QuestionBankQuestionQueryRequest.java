@@ -1,24 +1,21 @@
 package com.fancier.missingyou.common.model.dto.questionBankQuestion;
 
+
 import com.fancier.missingyou.common.model.common.PageRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 /**
- * 查询用户评论请求
+ * 查询题库题目关联请求
  *
  * @author <a href="https://github.com/hola1009">fancier</a>
- *
+ * 
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class QuestionBankQuestionQueryRequest extends PageRequest {
+public class QuestionBankQuestionQueryRequest extends PageRequest implements Serializable {
 
     /**
      * id
@@ -31,12 +28,19 @@ public class QuestionBankQuestionQueryRequest extends PageRequest {
     private Long notId;
 
     /**
-     * 搜索词
+     * 题库 id
      */
-    private String searchText;
+    private Long questionBankId;
+
+    /**
+     * 题目 id
+     */
+    private Long questionId;
 
     /**
      * 创建用户 id
      */
     private Long userId;
+
+    private static final long serialVersionUID = 1L;
 }

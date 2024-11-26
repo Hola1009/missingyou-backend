@@ -4,16 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1b428b9-95b9-4482-930c-9747ff20b807" name="Changes" comment="# 题目相关接口开发">
+    <list default="true" id="c1b428b9-95b9-4482-930c-9747ff20b807" name="Changes" comment="# 题库相关接口开发">
+      <change afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/config/MvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/interceptor/UserInfoInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/util/UserHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionBatchAddRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionBatchRemoveRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionRemoveRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/controller/QuestionBankQuestionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/mapstruct/QuestionBankQuestionConvert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/QuestionBankQuestionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionBankQuestionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/mapstruct/UserConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/mapstruct/UserConvert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank/QuestionBankAddRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank/QuestionBankAddRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank/QuestionBankEditRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank/QuestionBankEditRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank/QuestionBankQueryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank/QuestionBankQueryRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank/QuestionBankUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank/QuestionBankUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/vo/QuestionBankVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/vo/QuestionBankVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionAddRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionAddRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionEditRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionQueryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionQueryRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/vo/QuestionBankQuestionVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/vo/QuestionBankQuestionVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/util/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/util/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/mapstruct/TemplateConvert.java.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/mapstruct/TemplateConvert.java.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateService.java.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateService.java.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateServiceImpl.java.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateServiceImpl.java.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,35 +66,35 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/CODE/java_workspace/missingyou-next/missingyou-backend/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "fe34ed73ee4c6e458f633f1d4a5d266f",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/CODE/java_workspace/missingyou-next/missingyou-backend/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;fe34ed73ee4c6e458f633f1d4a5d266f&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -109,7 +121,7 @@
       <recent name="com.fancier.prototype.common.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CodeGenerator">
+  <component name="RunManager" selected="Spring Boot.MainApplication">
     <configuration name="CodeGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fancier.missingyou.common.util.CodeGenerator" />
       <module name="missingyou-common" />
@@ -179,6 +191,8 @@
       <workItem from="1731495699015" duration="1180000" />
       <workItem from="1731543797046" duration="206000" />
       <workItem from="1731544356216" duration="2612000" />
+      <workItem from="1732604924454" duration="863000" />
+      <workItem from="1732609125568" duration="4851000" />
     </task>
     <task id="LOCAL-00001" summary="# 后端模板-第一次提交">
       <option name="closed" value="true" />
@@ -228,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731469674213</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="# 题库相关接口开发">
+      <option name="closed" value="true" />
+      <created>1732605651465</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732605651465</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +299,7 @@
     <MESSAGE value="# 后端模板-第一次提交" />
     <MESSAGE value="# 通过后端模板初始化项目" />
     <MESSAGE value="# 题目相关接口开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 题目相关接口开发" />
+    <MESSAGE value="# 题库相关接口开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 题库相关接口开发" />
   </component>
 </project>

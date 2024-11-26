@@ -39,7 +39,6 @@ public class ${upperDataKey}ServiceImpl extends ServiceImpl<${upperDataKey}Mappe
         // 创建数据时，参数不能为空
         if (add) {
             // todo 补充校验规则
-            ThrowUtils.throwIf(StringUtils.isBlank(title), ErrorCode.PARAMS_ERROR);
         }
         // 修改数据时，有参数则校验
         // todo 补充校验规则

@@ -1,6 +1,5 @@
 package com.fancier.missingyou.web;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -16,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 // todo 如需开启 Redis，须移除 exclude 中的内容
 //@SpringBootApplication(exclude = {RedisAutoConfiguration.class})
 @SpringBootApplication
-// todo 扫描路径记得修改
+// 扫描路径记得修改
 @ComponentScan("com.fancier.missingyou")
 @EnableScheduling
 @ServletComponentScan

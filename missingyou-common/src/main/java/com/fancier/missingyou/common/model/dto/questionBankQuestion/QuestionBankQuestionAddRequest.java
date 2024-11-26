@@ -1,25 +1,27 @@
 package com.fancier.missingyou.common.model.dto.questionBankQuestion;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 
 /**
- * 创建用户评论请求
+ * 创建题库题目关联请求
  *
  * @author <a href="https://github.com/hola1009">fancier</a>
- *
+ * 
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class QuestionBankQuestionAddRequest {
+public class QuestionBankQuestionAddRequest implements Serializable {
+
     /**
-    * content
-    */
-    private String content;
+     * 题库 id
+     */
+    private Long questionBankId;
+
+    /**
+     * 题目 id
+     */
+    private Long questionId;
+
+    private static final long serialVersionUID = 1L;
 }
