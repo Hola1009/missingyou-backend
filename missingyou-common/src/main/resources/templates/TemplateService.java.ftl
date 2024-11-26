@@ -14,6 +14,13 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface ${upperDataKey}Service extends IService<${upperDataKey}> {
 
+    /**
+    * 校验数据
+    *
+    * @param add 对创建的数据进行校验
+    */
+    void valid${upperDataKey}(QuestionBank questionBank, boolean add);
+
 
     /**
      * 获取查询条件

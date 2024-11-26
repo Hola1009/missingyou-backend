@@ -32,5 +32,5 @@ public interface UserConvert {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "editTime", ignore = true)
     @Mapping(target = "createTime", ignore = true)
-    User updateDTO2DO(UserUpdateMyRequest userUpdateMyRequest);
+    User updateDTO2DO(UserUpdateMyRequest userUpdateRequest);
 }

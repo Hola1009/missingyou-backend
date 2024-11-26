@@ -30,6 +30,21 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ${upperDataKey}ServiceImpl extends ServiceImpl<${upperDataKey}Mapper, ${upperDataKey}> implements ${upperDataKey}Service {
 
+
+
+    @Override
+    public void valid${upperDataKey}(${upperDataKey} ${dataKey}, boolean add) {
+        ThrowUtils.throwIf(${dataKey} == null, ErrorCode.PARAMS_ERROR);
+
+        // 创建数据时，参数不能为空
+        if (add) {
+            // todo 补充校验规则
+            ThrowUtils.throwIf(StringUtils.isBlank(title), ErrorCode.PARAMS_ERROR);
+        }
+        // 修改数据时，有参数则校验
+        // todo 补充校验规则
+    }
+
     /**
     * 用户分页查询
     *

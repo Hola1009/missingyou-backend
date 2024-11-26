@@ -1,23 +1,17 @@
 package com.fancier.missingyou.common.model.dto.questionBank;
 
 import com.fancier.missingyou.common.model.common.PageRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 
 /**
- * 查询用户评论请求
+ * 查询题库请求
  *
  * @author <a href="https://github.com/hola1009">fancier</a>
- *
+ * 
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class QuestionBankQueryRequest extends PageRequest {
 
     /**
@@ -36,7 +30,28 @@ public class QuestionBankQueryRequest extends PageRequest {
     private String searchText;
 
     /**
+     * 标题
+     */
+    private String title;
+
+    /**
+     * 描述
+     */
+    private String description;
+
+    /**
+     * 图片
+     */
+    private String picture;
+
+    /**
      * 创建用户 id
      */
     private Long userId;
+
+    /**
+     * 是否要关联查询题目列表
+     */
+    private boolean needQueryQuestionList;
+
 }

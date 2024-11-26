@@ -16,9 +16,9 @@ public interface ${upperDataKey}Convert {
 
     ${upperDataKey}VO DO2${upperDataKey}VO(${upperDataKey} ${dataKey});
 
-    ${upperDataKey} updateDTO2DO(${upperDataKey}UpdateRequest ${dataKey}UpdateMyRequest);
+    ${upperDataKey} updateDTO2DO(${upperDataKey}UpdateRequest ${dataKey}UpdateRequest);
 
-    ${upperDataKey} addDTO2DO(${upperDataKey}AddRequest ${dataKey}AddMyRequest);
+    ${upperDataKey} addDTO2DO(${upperDataKey}AddRequest ${dataKey}AddRequest);
 
-    ${upperDataKey} editDTO2DO(${upperDataKey}EditRequest ${dataKey}EditMyRequest);
+    ${upperDataKey} editDTO2DO(${upperDataKey}EditRequest ${dataKey}EditRequest);
 }
