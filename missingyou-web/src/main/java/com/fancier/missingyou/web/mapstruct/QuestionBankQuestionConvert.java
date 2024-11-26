@@ -18,6 +18,7 @@ public interface QuestionBankQuestionConvert {
     QuestionBankQuestionConvert INSTANCE = Mappers.getMapper(QuestionBankQuestionConvert.class);
 
 
+    @Mapping(target = "user", ignore = true)
     QuestionBankQuestionVO DO2QuestionBankQuestionVO(QuestionBankQuestion questionBankQuestion);
 
 

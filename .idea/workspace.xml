@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1b428b9-95b9-4482-930c-9747ff20b807" name="Changes" comment="# 题库相关接口开发">
-      <change afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/config/MvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/interceptor/UserInfoInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/util/UserHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionBatchAddRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionBatchRemoveRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionRemoveRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/controller/QuestionBankQuestionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/mapstruct/QuestionBankQuestionConvert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/QuestionBankQuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionBankQuestionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionAddRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionAddRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionEditRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionQueryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionQueryRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBankQuestion/QuestionBankQuestionUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/vo/QuestionBankQuestionVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/vo/QuestionBankQuestionVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/util/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/util/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateService.java.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateService.java.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateServiceImpl.java.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateServiceImpl.java.ftl" afterDir="false" />
-    </list>
+    <list default="true" id="c1b428b9-95b9-4482-930c-9747ff20b807" name="Changes" comment="# 题库题目相关接口开发" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,7 +170,7 @@
       <workItem from="1731543797046" duration="206000" />
       <workItem from="1731544356216" duration="2612000" />
       <workItem from="1732604924454" duration="863000" />
-      <workItem from="1732609125568" duration="4851000" />
+      <workItem from="1732609125568" duration="5195000" />
     </task>
     <task id="LOCAL-00001" summary="# 后端模板-第一次提交">
       <option name="closed" value="true" />
@@ -250,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732605651465</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="# 题库题目相关接口开发">
+      <option name="closed" value="true" />
+      <created>1732619201440</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732619201440</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,6 +286,7 @@
     <MESSAGE value="# 通过后端模板初始化项目" />
     <MESSAGE value="# 题目相关接口开发" />
     <MESSAGE value="# 题库相关接口开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 题库相关接口开发" />
+    <MESSAGE value="# 题库题目相关接口开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 题库题目相关接口开发" />
   </component>
 </project>
