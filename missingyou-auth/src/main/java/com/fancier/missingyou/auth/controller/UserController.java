@@ -22,6 +22,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 用户管理控制层
@@ -149,4 +152,31 @@ public class UserController {
 
         return ResultUtils.success(true);
     }
+
+    /**
+     *
+     * @return 是否签到成功
+     */
+    @PostMapping("/add/sign_in")
+    public BaseResponse<Boolean> addUserSignIn(HttpServletRequest request) {
+        Long userid = userService.getLoginUser(request).getId();
+
+        Boolean result = userService.addUserSignIn(userid);
+
+        return ResultUtils.success(result);
+    }
+
+    /**
+     * 获取用户签到记录
+     *
+     * @param year    年份（为空表示当前年份）
+     * @return 签到记录映射
+     */
+    @GetMapping("/get/sign_in")
+    public BaseResponse<List<Integer>> getUserSignInRecord(Integer year, HttpServletRequest request) {
+        // 必须要登录才能获取
+        User loginUser = userService.getLoginUser(request);
+        return ResultUtils.success(userService.getUserSignInRecord(loginUser.getId(), year));
+    }
+
 }

@@ -5,29 +5,34 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fancier.missingyou.auth.mapstruct.UserConvert;
+import com.fancier.missingyou.auth.service.UserService;
+import com.fancier.missingyou.auth.util.DeviceUtils;
 import com.fancier.missingyou.common.constant.CommonConstant;
+import com.fancier.missingyou.common.constant.RedisConstant;
+import com.fancier.missingyou.common.expection.BusinessException;
+import com.fancier.missingyou.common.expection.ErrorCode;
+import com.fancier.missingyou.common.expection.ThrowUtils;
 import com.fancier.missingyou.common.mapper.UserMapper;
 import com.fancier.missingyou.common.model.dto.user.UserQueryRequest;
 import com.fancier.missingyou.common.model.entity.User;
 import com.fancier.missingyou.common.model.enums.UserRoleEnum;
 import com.fancier.missingyou.common.model.vo.LoginUserVO;
-import com.fancier.missingyou.auth.mapstruct.UserConvert;
-import com.fancier.missingyou.auth.service.UserService;
-import com.fancier.missingyou.auth.util.DeviceUtils;
 import com.fancier.missingyou.common.model.vo.UserVO;
-import com.fancier.missingyou.common.expection.BusinessException;
-import com.fancier.missingyou.common.expection.ErrorCode;
-import com.fancier.missingyou.common.expection.ThrowUtils;
 import com.fancier.missingyou.common.util.SqlUtils;
 import com.google.common.base.Preconditions;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.redisson.api.RBitSet;
+import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
-
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,6 +49,8 @@ import static com.fancier.missingyou.common.constant.UserConstant.USER_LOGIN_STA
 @RequiredArgsConstructor
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    private final RedissonClient redissonClient;
 
     /**
      * 用户注册
@@ -236,6 +243,50 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         return userVOPage.setRecords(userVOS);
     }
+
+    /**
+     * 添加用户签到记录
+     *
+     */
+    @Override
+    public Boolean addUserSignIn(Long userId) {
+        LocalDate now = LocalDate.now();
+        String key = RedisConstant.getUserSignInRedisKey(now.getYear(), userId);
+
+        RBitSet bitSet = redissonClient.getBitSet(key);
+
+        int offset = now.getDayOfYear();
+
+        if (!bitSet.get(offset)) {
+            // 如果当天未能签到, 则设置
+            return bitSet.set(offset, true);
+        }
+
+        return true;
+    }
+
+    @Override
+    public List<Integer> getUserSignInRecord(long userId, Integer year) {
+        if (year == null) {
+            LocalDate date = LocalDate.now();
+            year = date.getYear();
+        }
+        String key = RedisConstant.getUserSignInRedisKey(year, userId);
+        RBitSet signInBitSet = redissonClient.getBitSet(key);
+        // 加载 BitSet 到内存中，避免后续读取时发送多次请求
+        BitSet bitSet = signInBitSet.asBitSet();
+        // 统计签到的日期
+        List<Integer> dayList = new ArrayList<>();
+        // 从索引 0 开始查找下一个被设置为 1 的位
+        int index = bitSet.nextSetBit(0);
+        while (index >= 0) {
+            dayList.add(index);
+            // 查找下一个被设置为 1 的位
+            index = bitSet.nextSetBit(index + 1);
+        }
+        return dayList;
+    }
+
 
     /**
      * 组装 wrapper

@@ -8,6 +8,9 @@ import com.fancier.missingyou.common.model.vo.LoginUserVO;
 import com.fancier.missingyou.common.model.vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 用户服务层接口
@@ -91,4 +94,20 @@ public interface UserService extends IService<User> {
      * 分页获取用户封装列表
      */
     Page<UserVO> VOPageQuery(UserQueryRequest userQueryRequest);
+
+    /**
+     * 添加用户签到记录
+     *
+     */
+    Boolean addUserSignIn(Long userId);
+
+    /**
+     * 获取用户某个年份的签到记录
+     *
+     * @param userId 用户 id
+     * @param year   年份（为空表示当前年份）
+     * @return 签到记录映射
+     */
+    List<Integer> getUserSignInRecord(long userId, Integer year);
+
 }
