@@ -3,6 +3,7 @@ package com.fancier.missingyou.web.mapstruct;
 import cn.hutool.json.JSONUtil;
 import com.fancier.missingyou.common.model.dto.question.QuestionAddRequest;
 import com.fancier.missingyou.common.model.dto.question.QuestionEditRequest;
+import com.fancier.missingyou.common.model.dto.question.QuestionEsDTO;
 import com.fancier.missingyou.common.model.dto.question.QuestionUpdateRequest;
 import com.fancier.missingyou.common.model.entity.Question;
 import com.fancier.missingyou.common.model.vo.QuestionVO;
@@ -49,6 +50,17 @@ public interface QuestionConvert {
     @Mapping(target = "createTime", ignore = true)
     @Mapping(target = "tags", expression = "java(map2TagsStr(questionEditRequest.getTags()))")
     Question editDTO2DO(QuestionEditRequest questionEditRequest);
+
+    @Mapping(target = "tags", expression = "java(map2TagList(question.getTags()))")
+    QuestionEsDTO DO2EsDTO(Question question);
+
+    @Mapping(target = "editTime", ignore = true)
+    @Mapping(target = "tags", expression = "java(map2TagsStr(questionEsDTO.getTags()))")
+    Question EsDTO2DO(QuestionEsDTO questionEsDTO);
+
+
+    @Mapping(target = "tagList", expression = "java(questionEsDTO.getTags())")
+    QuestionVO EsDTO2VO(QuestionEsDTO questionEsDTO);
 
     /**
      * 将 tags 字符串转换为 List<String>类型

@@ -51,4 +51,9 @@
     content, answer
     from question
   </select>
+  <select id="listQuestionWithDelete" resultType="com.fancier.missingyou.common.model.entity.Question"
+          parameterType="java.util.Date">
+    select * from question where update_time &gt; #{minUpdateTime}
+  </select>
+
 </mapper>

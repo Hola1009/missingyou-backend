@@ -4,28 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1b428b9-95b9-4482-930c-9747ff20b807" name="Changes" comment="# 题库题目相关接口开发">
-      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/config/RedissonConfigure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/constant/RedisConstant.java" afterDir="false" />
+    <list default="true" id="c1b428b9-95b9-4482-930c-9747ff20b807" name="Changes" comment="# 用户签到记录日历">
+      <change afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/question/QuestionEsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/esdao/QuestionEsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/task/FullSyncQuestionToEs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/task/IncSyncQuestionToEs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/missingyou-web/src/test/java/com/fancier/missingyou/web/ElasticsearchRestTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/missingyou-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/mapper/QuestionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/mapper/QuestionMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/resources/mapper/QuestionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/resources/mapper/QuestionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/controller/QuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/mapstruct/QuestionConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/mapstruct/QuestionConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionBankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionBankServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
+        <option value="JUnit5 Test Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,36 +67,38 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/CODE/java_workspace/missingyou-next/missingyou-backend/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "fe34ed73ee4c6e458f633f1d4a5d266f",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/CODE/java_workspace/missingyou-next/missingyou-backend/missingyou-common/src/main/java/com/fancier/missingyou/common/model/dto/questionBank&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;fe34ed73ee4c6e458f633f1d4a5d266f&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql",
-      "redis"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;redis&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -103,6 +117,12 @@
       <recent name="E:\CODE\java_workspace\missingyou-next\missingyou-backend\missingyou-common\src\main\resources\templates\mapstruct" />
       <recent name="E:\CODE\java_workspace\missingyou-next\missingyou-backend\missingyou-common\src\main\resources\templates\model" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.fancier.missingyou.web.service.impl" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.fancier.missingyou.common.util" />
       <recent name="com.fancier.prototype.admin.controller" />
@@ -111,7 +131,7 @@
       <recent name="com.fancier.prototype.common.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MainApplication">
+  <component name="RunManager" selected="JUnit.ElasticsearchRestTest.indexDocument">
     <configuration name="CodeGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fancier.missingyou.common.util.CodeGenerator" />
       <module name="missingyou-common" />
@@ -121,6 +141,54 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ElasticsearchRestTest.deleteDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="missingyou-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fancier.missingyou.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.fancier.missingyou.web" />
+      <option name="MAIN_CLASS_NAME" value="com.fancier.missingyou.web.ElasticsearchRestTest" />
+      <option name="METHOD_NAME" value="deleteDocument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ElasticsearchRestTest.getDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="missingyou-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fancier.missingyou.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.fancier.missingyou.web" />
+      <option name="MAIN_CLASS_NAME" value="com.fancier.missingyou.web.ElasticsearchRestTest" />
+      <option name="METHOD_NAME" value="getDocument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ElasticsearchRestTest.indexDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="missingyou-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fancier.missingyou.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.fancier.missingyou.web" />
+      <option name="MAIN_CLASS_NAME" value="com.fancier.missingyou.web.ElasticsearchRestTest" />
+      <option name="METHOD_NAME" value="indexDocument" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,6 +208,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ElasticsearchRestTest.indexDocument" />
+        <item itemvalue="JUnit.ElasticsearchRestTest.deleteDocument" />
+        <item itemvalue="JUnit.ElasticsearchRestTest.getDocument" />
         <item itemvalue="Application.CodeGenerator" />
       </list>
     </recent_temporary>
@@ -183,6 +254,8 @@
       <workItem from="1731544356216" duration="2612000" />
       <workItem from="1732604924454" duration="863000" />
       <workItem from="1732609125568" duration="9032000" />
+      <workItem from="1732675395680" duration="6173000" />
+      <workItem from="1732711058543" duration="9900000" />
     </task>
     <task id="LOCAL-00001" summary="# 后端模板-第一次提交">
       <option name="closed" value="true" />
@@ -256,7 +329,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732619483175</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="# 用户签到记录日历">
+      <option name="closed" value="true" />
+      <created>1732703303212</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732703303212</updated>
+    </task>
+    <task id="LOCAL-00011" summary="# 用户签到记录日历">
+      <option name="closed" value="true" />
+      <created>1732703322207</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1732703322207</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +396,7 @@
     <MESSAGE value="# 题目相关接口开发" />
     <MESSAGE value="# 题库相关接口开发" />
     <MESSAGE value="# 题库题目相关接口开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 题库题目相关接口开发" />
+    <MESSAGE value="# 用户签到记录日历" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 用户签到记录日历" />
   </component>
 </project>

@@ -39,4 +39,10 @@ public interface QuestionService extends IService<Question> {
     */
     Page<QuestionVO> VOPageQuery(QuestionQueryRequest questionQueryRequest);
 
+    /**
+     * 从 ES 查询题目
+     *
+     */
+    Page<QuestionVO> searchFromEs(QuestionQueryRequest questionQueryRequest);
+
 }
