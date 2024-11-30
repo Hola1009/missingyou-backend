@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 public class QuestionBankServiceImpl extends ServiceImpl<QuestionBankMapper, QuestionBank> implements QuestionBankService {
 
     /**
-    * 用户分页查询
+    * 分页查询
     *
     */
     @Override
@@ -47,7 +47,7 @@ public class QuestionBankServiceImpl extends ServiceImpl<QuestionBankMapper, Que
         long size = questionBankQueryRequest.getPageSize();
 
         return this.page(new Page<>(current, size),
-        this.getQueryWrapper(questionBankQueryRequest));
+            this.getQueryWrapper(questionBankQueryRequest));
     }
 
     /**
@@ -66,7 +66,7 @@ public class QuestionBankServiceImpl extends ServiceImpl<QuestionBankMapper, Que
 
         Page<QuestionBank> questionBankPage = this.pageQuery(questionBankQueryRequest);
 
-            Page<QuestionBankVO> questionBankVOPage = new Page<>(current, size, questionBankPage.getTotal());
+        Page<QuestionBankVO> questionBankVOPage = new Page<>(current, size, questionBankPage.getTotal());
 
         // DO 列表转 VO 列表
         List<QuestionBankVO> questionBankVOS = questionBankPage.getRecords().stream()
@@ -132,7 +132,7 @@ public class QuestionBankServiceImpl extends ServiceImpl<QuestionBankMapper, Que
         // 精确查询
         queryWrapper.ne(ObjectUtils.isNotEmpty(notId), "id", notId);
         queryWrapper.eq(ObjectUtils.isNotEmpty(id), "id", id);
-        queryWrapper.eq(ObjectUtils.isNotEmpty(userId), "userId", userId);
+        queryWrapper.eq(ObjectUtils.isNotEmpty(userId), "user_id", userId);
         queryWrapper.eq(ObjectUtils.isNotEmpty(picture), "picture", picture);
         // 排序规则
         queryWrapper.orderBy(SqlUtils.validSortField(sortField),

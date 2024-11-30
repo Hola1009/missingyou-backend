@@ -28,7 +28,7 @@ public class ResultUtils {
      * @param errorCode the error code
      * @return r
      */
-    public static BaseResponse<Object> error(ErrorCode errorCode) {
+    public static BaseResponse<?> error(ErrorCode errorCode) {
         return new BaseResponse<>(errorCode);
     }
 
@@ -39,7 +39,7 @@ public class ResultUtils {
      * @param message the error message
      * @return r
      */
-    public static BaseResponse<Object> error(int code, String message) {
+    public static BaseResponse<?> error(int code, String message) {
         return new BaseResponse<>(code, null, message);
     }
 
@@ -49,7 +49,7 @@ public class ResultUtils {
      * @param errorCode the error code
      * @return the error message
      */
-    public static BaseResponse<Object> error(ErrorCode errorCode, String message) {
+    public static BaseResponse error(ErrorCode errorCode, String message) {
         return new BaseResponse<>(errorCode.getCode(), null, message);
     }
 }

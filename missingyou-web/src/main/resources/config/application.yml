@@ -13,12 +13,12 @@ spring:
       matching-strategy: ant_path_matcher
   # session 配置
   session:
-    # todo 取消注释开启分布式 session（须先配置 Redis）
-    # store-type: redis
+    # 取消注释开启分布式 session（须先配置 Redis）
+    store-type: redis
     # 30 天过期
     timeout: 2592000
   # 数据库配置
-  # todo 需替换配置
+  # 需替换配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3307/missingyou
@@ -51,6 +51,11 @@ spring:
     multipart:
       # 大小限制
       max-file-size: 10MB
+  cloud:
+    sentinel:
+      transport:
+        port: 8858
+        dashboard: localhost:8858
 server:
   address: 0.0.0.0
   port: 8101
@@ -104,3 +109,19 @@ sa-token:
   token-style: uuid
   # 是否输出操作日志
   is-log: true
+
+hotkey:
+  etcdServer: http://127.0.0.1:2379
+  appName: missingyou
+  caffeineSize: 10000
+  pushPeriod: 1000
+
+nacos:
+  config:
+    server-addr: localhost:8848
+    bootstrap:
+      enable: true
+    data-id: missingyou
+    group: DEFAULT_GROUP
+    type: yaml
+    auto-refresh: true

@@ -1,6 +1,9 @@
 package com.fancier.missingyou.web.controller;
 
 import cn.dev33.satoken.annotation.SaCheckRole;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fancier.missingyou.auth.service.UserService;
 import com.fancier.missingyou.common.constant.UserConstant;
@@ -22,6 +25,7 @@ import com.fancier.missingyou.web.mapstruct.QuestionBankConvert;
 import com.fancier.missingyou.web.service.QuestionBankService;
 import com.fancier.missingyou.web.service.QuestionService;
 import com.google.common.base.Preconditions;
+import com.jd.platform.hotkey.client.callback.JdHotKeyStore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -119,8 +123,21 @@ public class QuestionBankController {
      */
     @GetMapping("/get/vo")
     public BaseResponse<QuestionBankVO> getQuestionBankVOById(QuestionBankQueryRequest questionBankQueryRequest, HttpServletRequest ignoredRequest) {
+        ThrowUtils.throwIf(questionBankQueryRequest == null, ErrorCode.PARAMS_ERROR);
         Long id = questionBankQueryRequest.getId();
         ThrowUtils.throwIf(id <= 0, ErrorCode.PARAMS_ERROR);
+
+        // 生成 key
+        String key = "bank_detail_" + id;
+
+        if (JdHotKeyStore.isHotKey(key)) {
+            Object cachedQuestionBankVO = JdHotKeyStore.get(key);
+            if (cachedQuestionBankVO != null) {
+                return ResultUtils.success((QuestionBankVO) cachedQuestionBankVO);
+            }
+        }
+
+
         // 查询数据库
         QuestionBank questionBank = questionBankService.getById(id);
         ThrowUtils.throwIf(questionBank == null, ErrorCode.NOT_FOUND_ERROR);
@@ -138,6 +155,9 @@ public class QuestionBankController {
             Page<QuestionVO> questionVOPage = questionService.VOPageQuery(questionQueryRequest);
             questionBankVO.setQuestionPage(questionVOPage);
         }
+
+        // 设置本地缓存
+        JdHotKeyStore.smartSet(key, questionBankVO);
 
         return ResultUtils.success(questionBankVO);
     }
@@ -158,10 +178,38 @@ public class QuestionBankController {
      *
      */
     @PostMapping("/list/page/vo")
+    @SentinelResource(value = "listQuestionBankVOByPage",
+            blockHandler = "handleBlockException",
+            fallback = "handleFallback"
+    )
     public BaseResponse<Page<QuestionBankVO>> listQuestionBankVOByPage(@RequestBody QuestionBankQueryRequest questionBankQueryRequest,
-                                                               HttpServletRequest ignoredRequest) {
+                                                               HttpServletRequest request) {
         Page<QuestionBankVO> questionBankVOPage = questionBankService.VOPageQuery(questionBankQueryRequest);
             return ResultUtils.success(questionBankVOPage);
+    }
+
+    /**
+     * listQuestionBankVOByPage 流控操作（此处为了方便演示，写在同一个类中）
+     * 限流：提示“系统压力过大，请耐心等待”
+     * 熔断：执行降级操作
+     */
+    public BaseResponse<Page<QuestionBankVO>> handleBlockException(@RequestBody QuestionBankQueryRequest questionBankQueryRequest,
+                                                HttpServletRequest request, BlockException ex) {
+        // 降级操作
+        if (ex instanceof DegradeException) {
+            return handleFallback(questionBankQueryRequest, request, ex);
+        }
+        // 限流操作
+        return ResultUtils.error(ErrorCode.SYSTEM_ERROR, "系统压力过大，请耐心等待");
+    }
+
+    /**
+     * listQuestionBankVOByPage 降级操作：直接返回本地数据（此处为了方便演示，写在同一个类中）
+     */
+    public BaseResponse<Page<QuestionBankVO>> handleFallback(@RequestBody QuestionBankQueryRequest questionBankQueryRequest,
+                                                             HttpServletRequest request, Throwable ex) {
+        // 可以返回本地数据或空数据
+        return ResultUtils.success(null);
     }
 
     /**
