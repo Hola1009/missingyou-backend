@@ -72,7 +72,7 @@ public class ${upperDataKey}ServiceImpl extends ServiceImpl<${upperDataKey}Mappe
         long current = ${dataKey}QueryRequest.getCurrent();
         long size = ${dataKey}QueryRequest.getPageSize();
         // 限制爬虫
-        ThrowUtils.throwIf(size > 20, ErrorCode.PARAMS_ERROR);
+
 
         Page<${upperDataKey}> ${dataKey}Page = this.pageQuery(${dataKey}QueryRequest);
 

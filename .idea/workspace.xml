@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1b428b9-95b9-4482-930c-9747ff20b807" name="Changes" comment="# 同步题目到 es , 通过 es 进行查询 功能开发">
-      <change afterPath="$PROJECT_DIR$/missingyou-web/lib/hotkey-client-0.0.4-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/config/HotKeyConfigure.java" afterDir="false" />
+    <list default="true" id="c1b428b9-95b9-4482-930c-9747ff20b807" name="Changes" comment="# 整合 Sentinel 实现对题库请求的限流, 整合 nacos 实现轻量级的黑名单ip过滤,整合 hotkey 实现对热 key 的动态缓存">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/common/ResultUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/java/com/fancier/missingyou/common/model/common/ResultUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/config/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/config/MvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateServiceImpl.java.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-common/src/main/resources/templates/TemplateServiceImpl.java.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/missingyou-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/controller/QuestionBankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/controller/QuestionBankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionBankQuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionBankQuestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/controller/QuestionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionBankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionBankServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missingyou-web/src/test/java/com/fancier/missingyou/web/ElasticsearchRestTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +48,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -55,42 +59,42 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="showScratchesAndConsoles" value="false" />
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/CODE/java_workspace/missingyou-next/missingyou-backend/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;fe34ed73ee4c6e458f633f1d4a5d266f&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "E:/CODE/java_workspace/missingyou-next/missingyou-backend/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.31264368",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "fe34ed73ee4c6e458f633f1d4a5d266f",
+    "ts.external.directory.path": "D:\\JetBrains\\idea 2023.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;,
-      &quot;redis&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql",
+      "redis"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -250,7 +254,9 @@
       <workItem from="1732711058543" duration="17795000" />
       <workItem from="1732781186869" duration="13054000" />
       <workItem from="1732880685031" duration="416000" />
-      <workItem from="1732925237778" duration="1803000" />
+      <workItem from="1732925237778" duration="11874000" />
+      <workItem from="1732952180608" duration="2819000" />
+      <workItem from="1732961008554" duration="10380000" />
     </task>
     <task id="LOCAL-00001" summary="# 后端模板-第一次提交">
       <option name="closed" value="true" />
@@ -348,7 +354,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732754331532</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="# 整合 Sentinel 实现对题库请求的限流, 整合 nacos 实现轻量级的黑名单ip过滤,整合 hotkey 实现对热 key 的动态缓存">
+      <option name="closed" value="true" />
+      <created>1732936796589</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1732936796589</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +415,8 @@
     <MESSAGE value="# 题库题目相关接口开发" />
     <MESSAGE value="# 用户签到记录日历" />
     <MESSAGE value="# 同步题目到 es , 通过 es 进行查询 功能开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 同步题目到 es , 通过 es 进行查询 功能开发" />
+    <MESSAGE value="# 整合 Sentinel 实现对题库请求的限流, 整合 nacos 实现轻量级的黑名单ip过滤,整合 hotkey 实现对热 key 的动态缓存" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 整合 Sentinel 实现对题库请求的限流, 整合 nacos 实现轻量级的黑名单ip过滤,整合 hotkey 实现对热 key 的动态缓存" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -409,12 +424,12 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/controller/UserController.java</url>
           <line>66</line>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/missingyou-auth/src/main/java/com/fancier/missingyou/auth/service/impl/UserServiceImpl.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/missingyou-web/src/main/java/com/fancier/missingyou/web/service/impl/QuestionServiceImpl.java</url>
+          <line>176</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

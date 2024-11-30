@@ -62,7 +62,7 @@ public class QuestionBankServiceImpl extends ServiceImpl<QuestionBankMapper, Que
         long current = questionBankQueryRequest.getCurrent();
         long size = questionBankQueryRequest.getPageSize();
         // 限制爬虫
-        ThrowUtils.throwIf(size > 20, ErrorCode.PARAMS_ERROR);
+        
 
         Page<QuestionBank> questionBankPage = this.pageQuery(questionBankQueryRequest);
 

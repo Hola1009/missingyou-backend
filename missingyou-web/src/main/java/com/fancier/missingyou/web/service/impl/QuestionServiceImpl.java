@@ -1,16 +1,20 @@
 package com.fancier.missingyou.web.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fancier.missingyou.common.constant.CommonConstant;
 import com.fancier.missingyou.common.expection.ErrorCode;
 import com.fancier.missingyou.common.expection.ThrowUtils;
+import com.fancier.missingyou.common.mapper.QuestionBankQuestionMapper;
 import com.fancier.missingyou.common.mapper.QuestionMapper;
 import com.fancier.missingyou.common.model.dto.question.QuestionEsDTO;
 import com.fancier.missingyou.common.model.dto.question.QuestionQueryRequest;
 import com.fancier.missingyou.common.model.entity.Question;
+import com.fancier.missingyou.common.model.entity.QuestionBankQuestion;
 import com.fancier.missingyou.common.model.vo.QuestionVO;
 import com.fancier.missingyou.common.util.SqlUtils;
 import com.fancier.missingyou.web.mapstruct.QuestionConvert;
@@ -50,6 +54,8 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
     private final ElasticsearchRestTemplate elasticsearchRestTemplate;
 
+    private final QuestionBankQuestionMapper bankQuestionMapper;
+
     /**
     * 用户分页查询
     *
@@ -62,8 +68,29 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         long current = questionQueryRequest.getCurrent();
         long size = questionQueryRequest.getPageSize();
 
+        Long questionBankId = questionQueryRequest.getQuestionBankId();
+
+        if (questionBankId != null) {
+            LambdaQueryWrapper<QuestionBankQuestion> wrapper = new LambdaQueryWrapper<>();
+            List<QuestionBankQuestion> bankQuestions = bankQuestionMapper.selectList(wrapper.eq(
+                    QuestionBankQuestion::getQuestionBankId, questionBankId
+            ));
+
+            if (bankQuestions.isEmpty()) {
+                return new Page<>(current, size, 0);
+            }
+
+            List<Long> questionIds = bankQuestions.stream()
+                    .map(QuestionBankQuestion::getQuestionId)
+                    .collect(Collectors.toList());
+
+            List<Question> questions = this.listByIds(questionIds);
+            return new Page<Question>(current, size, questions.size()).setRecords(questions);
+        }
+
+
         return this.page(new Page<>(current, size),
-        this.getQueryWrapper(questionQueryRequest));
+            this.getQueryWrapper(questionQueryRequest));
     }
 
     /**
@@ -78,11 +105,10 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         long current = questionQueryRequest.getCurrent();
         long size = questionQueryRequest.getPageSize();
         // 限制爬虫
-        ThrowUtils.throwIf(size > 20, ErrorCode.PARAMS_ERROR);
 
         Page<Question> questionPage = this.pageQuery(questionQueryRequest);
 
-            Page<QuestionVO> questionVOPage = new Page<>(current, size, questionPage.getTotal());
+        Page<QuestionVO> questionVOPage = new Page<>(current, size, questionPage.getTotal());
 
         // DO 列表转 VO 列表
         List<QuestionVO> questionVOS = questionPage.getRecords().stream()
@@ -142,7 +168,9 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         // 排序
         SortBuilder<?> sortBuilder = SortBuilders.scoreSort();
         if (StringUtils.isNotBlank(sortField)) {
-            sortBuilder = SortBuilders.fieldSort(sortField);
+            // 将驼峰命名法转换为下划线命名法
+            String camelCase = StrUtil.toCamelCase(sortField);
+            sortBuilder = SortBuilders.fieldSort(camelCase);
             sortBuilder.order(CommonConstant.SORT_ORDER_ASC.equals(sortOrder) ? SortOrder.ASC : SortOrder.DESC);
         }
         // 分页
