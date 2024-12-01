@@ -6,20 +6,11 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.fancier.missingyou.common.model.entity.User;
 import org.springframework.util.DigestUtils;
 
-import java.util.List;
-
 import static com.fancier.missingyou.common.constant.UserConstant.SALT;
 
 public interface UserMapper extends BaseMapper<User> {
-    int deleteByPrimaryKey(Long id);
-
     int insert(User record);
 
-    User selectByPrimaryKey(Long id);
-
-    List<User> selectAll();
-
-    int updateByPrimaryKey(User record);
 
     default User checkUser(String userAccount, String userPassword) {
         // 加密

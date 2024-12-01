@@ -7,17 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 public interface QuestionMapper extends BaseMapper<Question> {
-    int deleteByPrimaryKey(Long id);
 
     int insert(Question record);
-
-    Question selectByPrimaryKey(Long id);
-
-    List<Question> selectAll();
-
-    int updateByPrimaryKey(Question record);
-
-
     /**
      * 查询所有数据 (包括已经逻辑删除了的)
      */

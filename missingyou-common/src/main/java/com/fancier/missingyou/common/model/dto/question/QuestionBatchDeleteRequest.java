@@ -1,7 +1,9 @@
 package com.fancier.missingyou.common.model.dto.question;
 
-import java.util.List;
+import lombok.Data;
 
+import java.util.List;
+@Data
 public class QuestionBatchDeleteRequest {
     /**
      * 题目 id 列表

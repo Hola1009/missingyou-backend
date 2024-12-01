@@ -9,10 +9,7 @@ import com.fancier.missingyou.common.expection.ThrowUtils;
 import com.fancier.missingyou.common.model.common.BaseResponse;
 import com.fancier.missingyou.common.model.common.DeleteRequest;
 import com.fancier.missingyou.common.model.common.ResultUtils;
-import com.fancier.missingyou.common.model.dto.question.QuestionAddRequest;
-import com.fancier.missingyou.common.model.dto.question.QuestionEditRequest;
-import com.fancier.missingyou.common.model.dto.question.QuestionQueryRequest;
-import com.fancier.missingyou.common.model.dto.question.QuestionUpdateRequest;
+import com.fancier.missingyou.common.model.dto.question.*;
 import com.fancier.missingyou.common.model.entity.Question;
 import com.fancier.missingyou.common.model.entity.User;
 import com.fancier.missingyou.common.model.vo.QuestionVO;
@@ -81,6 +78,15 @@ public class QuestionController {
 
         // 操作数据库
         boolean result = questionService.removeById(id);
+        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
+        return ResultUtils.success(true);
+    }
+
+    @PostMapping("/delete/batch")
+    @SaCheckRole(UserConstant.ADMIN_ROLE)
+    public BaseResponse<Boolean> batchDeleteQuestion(@RequestBody QuestionBatchDeleteRequest batchDeleteRequest) {
+        Preconditions.checkArgument(batchDeleteRequest != null);
+        boolean result = questionService.removeBatchByIds(batchDeleteRequest.getQuestionIdList());
         ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
         return ResultUtils.success(true);
     }

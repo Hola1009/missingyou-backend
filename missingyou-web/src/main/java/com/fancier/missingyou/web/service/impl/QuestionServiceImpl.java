@@ -124,7 +124,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         Long id = questionQueryRequest.getId();
         Long notId = questionQueryRequest.getNotId();
         String searchText = questionQueryRequest.getSearchText();
-        List<String> tags = questionQueryRequest.getTags();
+        List<String> tags = questionQueryRequest.getTagList();
         Long questionBankId = questionQueryRequest.getQuestionBankId();
         Long userId = questionQueryRequest.getUserId();
         // 注意，ES 的起始页为 0
@@ -252,7 +252,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         String searchText = questionQueryRequest.getSearchText();
         String sortField = questionQueryRequest.getSortField();
         String sortOrder = questionQueryRequest.getSortOrder();
-        List<String> tagList = questionQueryRequest.getTags();
+        List<String> tagList = questionQueryRequest.getTagList();
         Long userId = questionQueryRequest.getUserId();
         String answer = questionQueryRequest.getAnswer();
 
